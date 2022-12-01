@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1 style="text-align: center;">Welcome, {{name}}!</h1>
+<table style="width:100%">
+	<tr>
+		<th>
+			<h2> Chats: </h2>
+		</th>
+	</tr>
+	
+		{% for chat in chats %}
+		<tr>
+		<td>
+    	<div class="card">
+        	<div class="card-body">
+            	<h5 class="card-title">{{ name }} chat {{chat.id}}</h5>
+				<a href="{{ url_for('show_chat', username=name,id=chat.id) }}" class="card-link">View Chat</a>
+        	</div>
+    	</div>
+		</td>
+		</tr>
+		{% else %}
+		<tr>
+    		<td>No Chats</td>
+		</tr>
+		{% endfor %}
+	
+</table>
+
+{% endblock %}
