@@ -18,6 +18,9 @@ class Message(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def __repr__(self):
+       return '<Msg id:{} Text:{} Author:{}'.format(self.id, self.text, self.author)
+
     def getPassedTimeStamp(self):
         current = datetime.utcnow() - self.timestamp
         minutes = divmod(current.total_seconds(), 60)
